@@ -413,12 +413,132 @@
     letter-spacing:0.04em;
   }
 
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+  }
+  .work-card{
+    background:var(--surface);
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    padding:24px 24px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .work-card h3{
+    font-family:var(--font-display);
+    font-size:1.3rem;
+    font-weight:600;
+    margin:0;
+  }
+  .work-card > p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:0.94rem;
+  }
+  .work-note{
+    font-size:0.78rem;
+    font-style:italic;
+    color:var(--ink-soft);
+    opacity:0.85;
+  }
+  .mini-stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:auto;
+    padding-top:4px;
+  }
+  .mini-stat{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:10px 12px;
+  }
+  .mini-stat b{
+    display:block;
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    color:var(--accent);
+    font-weight:600;
+  }
+  .mini-stat span{
+    font-size:0.72rem;
+    color:var(--ink-soft);
+  }
+  .mini-list{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:grid;
+    gap:8px;
+  }
+  .mini-list li{
+    font-size:0.86rem;
+    color:var(--ink-soft);
+    padding-left:18px;
+    position:relative;
+  }
+  .mini-list li::before{
+    content:'—';
+    position:absolute;
+    left:0;
+    color:var(--accent);
+  }
+  .mini-table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:var(--font-mono);
+    font-size:0.74rem;
+    margin-top:auto;
+  }
+  .mini-table th{
+    background:var(--accent-soft);
+    color:var(--ink);
+    text-align:left;
+    padding:6px 8px;
+    font-weight:600;
+  }
+  .mini-table td{
+    padding:6px 8px;
+    border-top:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+  .mini-pill{
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:10px;
+    font-size:0.68rem;
+    font-weight:600;
+    background:var(--accent-soft);
+    color:var(--accent-deep);
+  }
+  .mini-pill.pill-wait{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+  .work-download{
+    align-self:flex-start;
+    font-family:var(--font-mono);
+    font-size:0.76rem;
+    letter-spacing:0.03em;
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px dashed var(--accent);
+    padding-bottom:1px;
+    margin-top:auto;
+  }
+  .work-download:hover{color:var(--accent-deep);border-color:var(--accent-deep);}
+
   @media (max-width:760px){
     .stats{grid-template-columns:repeat(2,1fr);}
     .stat:nth-child(3){border-left:none;}
     .tickets{grid-template-columns:1fr;}
     .approach{grid-template-columns:1fr;}
     .about{grid-template-columns:1fr;}
+    .work-grid{grid-template-columns:1fr;}
   }
 </style>
 
@@ -428,6 +548,7 @@
       <span class="mark">Annissa Manser</span>
       <div class="nav-links">
         <a href="#services">Services</a>
+        <a href="#work">Work</a>
         <a href="#approach">Approach</a>
         <a href="#about">Background</a>
         <a href="#faq">FAQ</a>
@@ -483,6 +604,57 @@
         <h3>Back-Office Support</h3>
         <p>Standing coverage for compliance upkeep and operational admin — for owners who need it handled continuously, not as a one-off project.</p>
         <div class="deliverable">Deliverable: recurring monthly engagement</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head">
+      <h2>Previous Work</h2>
+      <span class="tag">Sample deliverables</span>
+    </div>
+    <div class="work-grid">
+      <div class="work-card">
+        <span class="wo">Sample &middot; Excel / Sheets</span>
+        <h3>Automated Profitability Dashboard</h3>
+        <p>Turns raw revenue and expense exports into a live executive view — job-level profitability, unpaid invoices, and monthly trends that update themselves after the first setup.</p>
+        <div class="mini-stats">
+          <div class="mini-stat"><b>$128,400</b><span>Revenue MTD</span></div>
+          <div class="mini-stat"><b>34%</b><span>Gross Margin</span></div>
+          <div class="mini-stat"><b>$12,900</b><span>Unpaid Invoices</span></div>
+          <div class="mini-stat"><b>21%</b><span>Avg Job Profit</span></div>
+        </div>
+        <span class="work-note">Sample figures — illustrative only</span>
+      </div>
+
+      <div class="work-card">
+        <span class="wo">Sample &middot; Executive Report</span>
+        <h3>90-Day Operations &amp; Compliance Review</h3>
+        <p>A structured audit of dispatch, drivers, sales, billing, and compliance — diagnosing where gaps were compounding across departments, then translating findings into a measurable action plan for leadership.</p>
+        <ul class="mini-list">
+          <li>Cross-department diagnostic: dispatch, drivers, sales, billing, compliance</li>
+          <li>7-point SMART-goals action plan with 30&ndash;90 day targets</li>
+          <li>Built as a leadership-ready document, not a slide of vague intentions</li>
+        </ul>
+      </div>
+
+      <div class="work-card">
+        <span class="wo">Sample &middot; Word / PDF</span>
+        <h3>Employee Handbook &amp; Onboarding Framework</h3>
+        <p>A complete policy and onboarding handbook — at-will language, PTO accrual, background-check procedures, and confidentiality policy — written to hold up under audit and easy for new hires to actually read.</p>
+        <a class="work-download" href="assets/sample-employee-handbook.docx" target="_blank" rel="noopener">Download redacted sample (.docx) &rarr;</a>
+      </div>
+
+      <div class="work-card">
+        <span class="wo">Sample &middot; Spreadsheet</span>
+        <h3>Ops Task &amp; Accountability Tracker</h3>
+        <p>A shared task board for tracking cross-department compliance work, field observations, and recurring approvals — built so leadership sees status at a glance without chasing updates.</p>
+        <table class="mini-table">
+          <tr><th>Task</th><th>Dept</th><th>Status</th></tr>
+          <tr><td>Vendor certificate renewal</td><td>Compliance</td><td><span class="mini-pill">Completed</span></td></tr>
+          <tr><td>New hire background check</td><td>HR</td><td><span class="mini-pill">Completed</span></td></tr>
+          <tr><td>Quarterly equipment inspection</td><td>Fleet</td><td><span class="mini-pill pill-wait">Waiting on Info</span></td></tr>
+        </table>
       </div>
     </div>
   </section>
@@ -577,7 +749,7 @@
 
   <footer>
     <span>Annissa Manser — Operations &amp; Compliance</span>
-    <span><a href="https://www.fiverr.com/annissamanser" target="_blank" rel="noopener" style="text-decoration:none;">Also on Fiverr</a> · Based in Tampa, FL</span>
+    <span><a href="https://www.fiverr.com/annissamanser" target="_blank" rel="noopener" style="text-decoration:none;">Also on Fiverr</a> · <a href="https://www.upwork.com/freelancers/~01857d89a297b2b7c0" target="_blank" rel="noopener" style="text-decoration:none;">Upwork</a> · Based in Tampa, FL</span>
   </footer>
 </div>
 
