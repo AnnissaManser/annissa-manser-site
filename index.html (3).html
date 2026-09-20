@@ -1,0 +1,793 @@
+<title>Annissa Manser</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+  :root{
+    --bg:#FBF6F8;
+    --surface:#FFFFFF;
+    --ink:#241820;
+    --ink-soft:#7A6670;
+    --line:rgba(36,24,32,0.13);
+    --accent:#AD1457;
+    --accent-deep:#7A0E3D;
+    --accent-soft:#F5DCE7;
+    --accent-ink:#FDF1F5;
+    --font-display:'Fraunces', Georgia, serif;
+    --font-body:'IBM Plex Sans', 'Segoe UI', sans-serif;
+    --font-mono:'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1C1418;
+      --surface:#271B21;
+      --ink:#F5E9EE;
+      --ink-soft:#C2A9B4;
+      --line:rgba(245,233,238,0.14);
+      --accent:#F2568F;
+      --accent-deep:#F9A8C6;
+      --accent-soft:#3A2229;
+      --accent-ink:#1C1418;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1C1418;
+    --surface:#271B21;
+    --ink:#F5E9EE;
+    --ink-soft:#C2A9B4;
+    --line:rgba(245,233,238,0.14);
+    --accent:#F2568F;
+    --accent-deep:#F9A8C6;
+    --accent-soft:#3A2229;
+    --accent-ink:#1C1418;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    padding-inline:20px;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+  [hidden]{display:none!important;}
+
+  .wrap{max-width:1040px;margin-inline:auto;}
+
+  header.site{
+    padding-block:26px 0;
+    border-bottom:2px solid var(--accent);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding-block:16px 22px;
+    flex-wrap:wrap;
+  }
+  .nav .mark{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-style:italic;
+    font-size:1.25rem;
+    color:var(--ink);
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    flex-wrap:wrap;
+    font-family:var(--font-mono);
+    font-size:0.76rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .nav-links a{text-decoration:none;}
+  .nav-links a:hover{color:var(--accent);}
+  .nav-cta{
+    padding:9px 16px;
+    border-radius:20px;
+    background:var(--accent);
+    color:var(--accent-ink);
+    text-transform:none;
+    letter-spacing:0;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:0.85rem;
+  }
+  .nav-cta:hover{background:var(--accent-deep);color:var(--accent-ink);}
+
+  .hero{
+    padding-block:60px 36px;
+    display:grid;
+    gap:20px;
+  }
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  h1{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(2.4rem,6vw,4.2rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin:0;
+    text-wrap:balance;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--accent);
+  }
+  .hero-sub{
+    font-size:clamp(1.05rem,2.1vw,1.25rem);
+    color:var(--ink-soft);
+    max-width:56ch;
+    text-wrap:balance;
+  }
+  .qualify{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    max-width:56ch;
+  }
+  .qualify b{color:var(--ink);font-weight:600;}
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 24px;
+    border-radius:28px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+    border:1.5px solid transparent;
+    transition:transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:var(--accent-ink);
+  }
+  .btn-primary:hover{transform:translateY(-2px);background:var(--accent-deep);}
+  .btn-ghost{
+    border-color:var(--line);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  .stats{
+    margin-block:32px;
+    border-top:1.5px solid var(--line);
+    border-bottom:1.5px solid var(--line);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+  }
+  .stat{
+    padding:20px 16px;
+    border-left:1.5px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .stat:first-child{border-left:none;}
+  .stat b{
+    font-family:var(--font-display);
+    font-variant-numeric:tabular-nums;
+    font-size:clamp(1.5rem,3.4vw,2.1rem);
+    color:var(--accent);
+    font-weight:600;
+  }
+  .stat span{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+  }
+
+  section{padding-block:50px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(1.7rem,3.6vw,2.3rem);
+    margin:0;
+  }
+  .section-head .tag{
+    font-family:var(--font-mono);
+    font-size:0.76rem;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+
+  .tickets{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+  }
+  .ticket{
+    background:var(--surface);
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    padding:24px 24px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .ticket .wo{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    color:var(--accent);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+  .ticket h3{
+    font-family:var(--font-display);
+    font-size:1.4rem;
+    font-weight:600;
+    margin:0;
+  }
+  .ticket p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:0.96rem;
+  }
+  .ticket .deliverable{
+    margin-top:auto;
+    padding-top:12px;
+    border-top:1px dashed var(--line);
+    font-family:var(--font-mono);
+    font-size:0.76rem;
+    color:var(--ink-soft);
+  }
+  .ticket.flagship{
+    border-color:var(--accent);
+    background:linear-gradient(180deg, var(--accent-soft), var(--surface) 55%);
+  }
+
+  .approach{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  .step{
+    padding:24px 22px;
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .step .num{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--accent);
+  }
+  .step h4{
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    margin:0;
+    font-weight:600;
+  }
+  .step p{margin:0;color:var(--ink-soft);font-size:0.92rem;}
+
+  .about{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:36px;
+    align-items:start;
+  }
+  .about p{color:var(--ink-soft);}
+  .about p+p{margin-top:14px;}
+  .credentials{
+    background:var(--surface);
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    padding:22px 24px;
+  }
+  .credentials .tag{
+    font-family:var(--font-mono);
+    font-size:0.74rem;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    display:block;
+    margin-bottom:12px;
+  }
+  .credentials ul{
+    margin:0;
+    padding-left:18px;
+    color:var(--ink-soft);
+    font-size:0.92rem;
+    display:grid;
+    gap:8px;
+  }
+
+  .faq{
+    display:grid;
+    gap:14px;
+  }
+  .faq details{
+    background:var(--surface);
+    border:1.5px solid var(--line);
+    border-radius:12px;
+    padding:16px 20px;
+  }
+  .faq summary{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1.05rem;
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{
+    content:'+';
+    font-family:var(--font-body);
+    color:var(--accent);
+    font-size:1.3rem;
+    flex-shrink:0;
+    transition:transform 0.15s ease;
+  }
+  .faq details[open] summary::after{transform:rotate(45deg);}
+  .faq p{margin:12px 0 0;color:var(--ink-soft);font-size:0.94rem;}
+
+  .cta{
+    background:var(--ink);
+    color:var(--bg);
+    border-radius:20px;
+    padding:46px 34px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+  }
+  .cta .eyebrow{color:var(--accent-deep);}
+  .cta h2{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(1.9rem,4.6vw,2.7rem);
+    margin:0;
+    color:var(--bg);
+    text-wrap:balance;
+  }
+  .cta p{color:color-mix(in srgb, var(--bg) 75%, transparent);max-width:50ch;margin:0;}
+  .cta .btn-primary{background:var(--accent);color:var(--accent-ink);}
+  .cta .btn-ghost{border-color:color-mix(in srgb, var(--bg) 40%, transparent);color:var(--bg);}
+  .email-fallback{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    color:color-mix(in srgb, var(--bg) 70%, transparent);
+  }
+  #copy-email-btn{
+    font-family:var(--font-body);
+    font-size:0.78rem;
+    font-weight:600;
+    padding:5px 12px;
+    border-radius:14px;
+    border:1.5px solid color-mix(in srgb, var(--bg) 40%, transparent);
+    background:transparent;
+    color:var(--bg);
+    cursor:pointer;
+  }
+  #copy-email-btn:hover{border-color:var(--accent-deep);color:var(--accent-deep);}
+
+  footer{
+    padding-block:28px 40px;
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+  }
+  .work-card{
+    background:var(--surface);
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    padding:24px 24px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .work-card h3{
+    font-family:var(--font-display);
+    font-size:1.3rem;
+    font-weight:600;
+    margin:0;
+  }
+  .work-card > p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:0.94rem;
+  }
+  .work-note{
+    font-size:0.78rem;
+    font-style:italic;
+    color:var(--ink-soft);
+    opacity:0.85;
+  }
+  .mini-stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:auto;
+    padding-top:4px;
+  }
+  .mini-stat{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:10px 12px;
+  }
+  .mini-stat b{
+    display:block;
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    color:var(--accent);
+    font-weight:600;
+  }
+  .mini-stat span{
+    font-size:0.72rem;
+    color:var(--ink-soft);
+  }
+  .mini-list{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:grid;
+    gap:8px;
+  }
+  .mini-list li{
+    font-size:0.86rem;
+    color:var(--ink-soft);
+    padding-left:18px;
+    position:relative;
+  }
+  .mini-list li::before{
+    content:'—';
+    position:absolute;
+    left:0;
+    color:var(--accent);
+  }
+  .mini-table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:var(--font-mono);
+    font-size:0.74rem;
+    margin-top:auto;
+  }
+  .mini-table th{
+    background:var(--accent-soft);
+    color:var(--ink);
+    text-align:left;
+    padding:6px 8px;
+    font-weight:600;
+  }
+  .mini-table td{
+    padding:6px 8px;
+    border-top:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+  .mini-pill{
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:10px;
+    font-size:0.68rem;
+    font-weight:600;
+    background:var(--accent-soft);
+    color:var(--accent-deep);
+  }
+  .mini-pill.pill-wait{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+  .work-download{
+    align-self:flex-start;
+    font-family:var(--font-mono);
+    font-size:0.76rem;
+    letter-spacing:0.03em;
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px dashed var(--accent);
+    padding-bottom:1px;
+    margin-top:auto;
+  }
+  .work-download:hover{color:var(--accent-deep);border-color:var(--accent-deep);}
+
+  @media (max-width:760px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(3){border-left:none;}
+    .tickets{grid-template-columns:1fr;}
+    .approach{grid-template-columns:1fr;}
+    .about{grid-template-columns:1fr;}
+    .work-grid{grid-template-columns:1fr;}
+  }
+</style>
+
+<div class="wrap">
+  <header class="site">
+    <nav class="nav">
+      <span class="mark">Annissa Manser</span>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">Background</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#contact">Get in touch</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="eyebrow">Operations &amp; Compliance Infrastructure</span>
+    <h1>Systems for businesses running on <em>spreadsheets and good intentions</em></h1>
+    <p class="hero-sub">I build the dashboards, safety programs, and back-office infrastructure that growing companies need but haven't had time to build themselves — the same way I built it for a 25-person industrial recycling operation, from zero.</p>
+    <p class="qualify">Best fit if you're a <b>small business owner or operations lead</b> who needs one specific thing built well — a dashboard, a compliance program, an HR system — and handed off in a form your team can actually run.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-ghost" href="#services">See services</a>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><b>25</b><span>employees supported</span></div>
+    <div class="stat"><b>403</b><span>fleet assets tracked</span></div>
+    <div class="stat"><b>11</b><span>trucks under DOT compliance</span></div>
+    <div class="stat"><b>0→1</b><span>HR &amp; EHS infrastructure built from scratch</span></div>
+  </div>
+
+  <section id="services">
+    <div class="section-head">
+      <h2>Services</h2>
+      <span class="tag">4 active offerings</span>
+    </div>
+    <div class="tickets">
+      <div class="ticket flagship">
+        <span class="wo">Flagship</span>
+        <h3>Spreadsheet Dashboards &amp; Automation</h3>
+        <p>Excel or Google Sheets dashboards that turn raw exports into a live view of profitability — built once, updates itself after.</p>
+        <div class="deliverable">Deliverable: automated profitability dashboard, formulas + charts included</div>
+      </div>
+      <div class="ticket">
+        <span class="wo">Service</span>
+        <h3>EHS &amp; Safety Compliance</h3>
+        <p>Safety programs, training structures, and compliance documentation built to hold up under audit — not just to exist on paper.</p>
+        <div class="deliverable">Deliverable: compliance program, policies &amp; recordkeeping system</div>
+      </div>
+      <div class="ticket">
+        <span class="wo">Service</span>
+        <h3>HR &amp; Operations Infrastructure</h3>
+        <p>Handbooks, PTO accrual logic, onboarding flow, and the operational scaffolding that lets a small team stop reinventing process weekly.</p>
+        <div class="deliverable">Deliverable: policy documents, trackers, onboarding system</div>
+      </div>
+      <div class="ticket">
+        <span class="wo">Ongoing</span>
+        <h3>Back-Office Support</h3>
+        <p>Standing coverage for compliance upkeep and operational admin — for owners who need it handled continuously, not as a one-off project.</p>
+        <div class="deliverable">Deliverable: recurring monthly engagement</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head">
+      <h2>Previous Work</h2>
+      <span class="tag">Sample deliverables</span>
+    </div>
+    <div class="work-grid">
+      <div class="work-card">
+        <span class="wo">Sample &middot; Excel / Sheets</span>
+        <h3>Automated Profitability Dashboard</h3>
+        <p>Turns raw revenue and expense exports into a live executive view — job-level profitability, unpaid invoices, and monthly trends that update themselves after the first setup.</p>
+        <div class="mini-stats">
+          <div class="mini-stat"><b>$128,400</b><span>Revenue MTD</span></div>
+          <div class="mini-stat"><b>34%</b><span>Gross Margin</span></div>
+          <div class="mini-stat"><b>$12,900</b><span>Unpaid Invoices</span></div>
+          <div class="mini-stat"><b>21%</b><span>Avg Job Profit</span></div>
+        </div>
+        <span class="work-note">Sample figures — illustrative only</span>
+      </div>
+
+      <div class="work-card">
+        <span class="wo">Sample &middot; Executive Report</span>
+        <h3>90-Day Operations &amp; Compliance Review</h3>
+        <p>A structured audit of dispatch, drivers, sales, billing, and compliance — diagnosing where gaps were compounding across departments, then translating findings into a measurable action plan for leadership.</p>
+        <ul class="mini-list">
+          <li>Cross-department diagnostic: dispatch, drivers, sales, billing, compliance</li>
+          <li>7-point SMART-goals action plan with 30&ndash;90 day targets</li>
+          <li>Built as a leadership-ready document, not a slide of vague intentions</li>
+        </ul>
+      </div>
+
+      <div class="work-card">
+        <span class="wo">Sample &middot; Word / PDF</span>
+        <h3>Employee Handbook &amp; Onboarding Framework</h3>
+        <p>A complete policy and onboarding handbook — at-will language, PTO accrual, background-check procedures, and confidentiality policy — written to hold up under audit and easy for new hires to actually read.</p>
+        <a class="work-download" href="assets/sample-employee-handbook.docx" target="_blank" rel="noopener">Download redacted sample (.docx) &rarr;</a>
+      </div>
+
+      <div class="work-card">
+        <span class="wo">Sample &middot; Spreadsheet</span>
+        <h3>Ops Task &amp; Accountability Tracker</h3>
+        <p>A shared task board for tracking cross-department compliance work, field observations, and recurring approvals — built so leadership sees status at a glance without chasing updates.</p>
+        <table class="mini-table">
+          <tr><th>Task</th><th>Dept</th><th>Status</th></tr>
+          <tr><td>Vendor certificate renewal</td><td>Compliance</td><td><span class="mini-pill">Completed</span></td></tr>
+          <tr><td>New hire background check</td><td>HR</td><td><span class="mini-pill">Completed</span></td></tr>
+          <tr><td>Quarterly equipment inspection</td><td>Fleet</td><td><span class="mini-pill pill-wait">Waiting on Info</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="section-head">
+      <h2>How it runs</h2>
+      <span class="tag">3-step process</span>
+    </div>
+    <div class="approach">
+      <div class="step">
+        <span class="num">01</span>
+        <h4>Intake</h4>
+        <p>You describe the mess — the spreadsheet nobody trusts, the compliance gap, the process living in someone's head. I scope exactly what "done" looks like.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h4>Build</h4>
+        <p>I build it directly in the tools you already use, with plain documentation so your team can run it without me in the room.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h4>Handoff</h4>
+        <p>A short walkthrough, the file or system is yours, and I'm available for the ongoing tier if you'd rather not manage it at all.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <h2>Background</h2>
+      <span class="tag">Field-tested, not theoretical</span>
+    </div>
+    <div class="about">
+      <div>
+        <p>I run EHS, HR, fleet compliance, legal &amp; collections tracking, and P&amp;L reporting for a scrap metal recycling and container hauling company — a job that meant building almost all of that infrastructure myself, because none of it existed yet.</p>
+        <p>That's the work I bring to small business owners: not consulting theory, but the actual dashboards, policies, and tracking systems that a lean operation needs to run without things falling through the cracks — built by someone who has had to live inside the result.</p>
+      </div>
+      <div class="credentials">
+        <span class="tag">Currently handling</span>
+        <ul>
+          <li>EHS &amp; safety compliance administration</li>
+          <li>HR infrastructure &amp; employee handbook systems</li>
+          <li>Fleet &amp; DOT compliance tracking</li>
+          <li>Legal &amp; collections case tracking</li>
+          <li>Scrap operations &amp; P&amp;L reporting</li>
+          <li>Company-wide AI tooling rollout</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="section-head">
+      <h2>Before you message me</h2>
+      <span class="tag">Common questions</span>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>I don't know exactly what I need yet — is that okay?</summary>
+        <p>Yes. Most projects start as "this spreadsheet is a mess" or "we keep missing compliance deadlines," not a finished spec. Send me what's going wrong and I'll turn it into a clear, scoped deliverable before any work starts.</p>
+      </details>
+      <details>
+        <summary>Do you work in Excel, Google Sheets, or both?</summary>
+        <p>Both — I'll build in whichever your team already uses, so there's no new software to adopt.</p>
+      </details>
+      <details>
+        <summary>Is this a one-time build or ongoing help?</summary>
+        <p>Either. The first three services are project-based with a clear handoff; the back-office tier is for owners who'd rather have it managed continuously.</p>
+      </details>
+      <details>
+        <summary>What if my business isn't in scrap or industrial services?</summary>
+        <p>That background is where the approach comes from, not the limit on who it's for — the same dashboard, compliance, and HR problems show up in almost any small business.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="cta">
+      <span class="eyebrow">Ready when you are</span>
+      <h2>Let's get it off your plate</h2>
+      <p>Send details on what you're trying to fix and I'll scope it from there.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:annissamanser@gmail.com" target="_blank" rel="noopener">Email me</a>
+      </div>
+      <div class="email-fallback">
+        <span id="email-text">annissamanser@gmail.com</span>
+        <button type="button" id="copy-email-btn">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Annissa Manser — Operations &amp; Compliance</span>
+    <span><a href="https://www.fiverr.com/annissamanser" target="_blank" rel="noopener" style="text-decoration:none;">Also on Fiverr</a> · <a href="https://www.upwork.com/freelancers/~01857d89a297b2b7c0" target="_blank" rel="noopener" style="text-decoration:none;">Upwork</a> · Based in Tampa, FL</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('copy-email-btn');
+  var emailEl = document.getElementById('email-text');
+  if(!btn || !emailEl) return;
+  btn.addEventListener('click', function(){
+    var email = emailEl.textContent.trim();
+    var done = function(){
+      var original = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = original; }, 1800);
+    };
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(email).then(done).catch(function(){ fallbackCopy(email, done); });
+      } else {
+        fallbackCopy(email, done);
+      }
+    }catch(e){
+      fallbackCopy(email, done);
+    }
+  });
+  function fallbackCopy(text, cb){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      cb();
+    }catch(e){ /* clipboard unavailable; email text remains visible to copy manually */ }
+  }
+})();
+</script>
